@@ -20,14 +20,6 @@ MODEL_PATH = "/home/lab/halyn/gemma/halyn/paper/models/gemma-2-9b-it"
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # 실제 운영 환경에서는 구체적인 origin을 지정하세요
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 # Global variables to store the knowledge base and QA chain
 knowledge_base = None
 qa_chain = None

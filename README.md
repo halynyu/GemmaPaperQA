@@ -1,5 +1,5 @@
 <!--- BADGES: START --->
-[![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-gemma2_2b-yellow)](https://huggingface.co/google/gemma-2-2b-it) [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-gemma2_9b-yellow)](https://huggingface.co/google/gemma-2-9b-it) [![Gemma2 Model](https://img.shields.io/badge/💻-Try%20Gemma2_%20Demo-blue)]([https://pdf-question-answering-gemma2.streamlit.app//](https://huggingface.co/spaces/junipark/gemma_paper_qa))
+[![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-gemma2_2b-yellow)](https://huggingface.co/google/gemma-2-2b-it) [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-gemma2_9b-yellow)](https://huggingface.co/google/gemma-2-9b-it) [![Gemma2 Model](https://img.shields.io/badge/💻-Try%20Gemma2_%20Demo-blue)](https://huggingface.co/spaces/junipark/gemma_paper_qa)
 <!--- BADGES: END --->
 # GemmaPaperQA: AI Research Assistant
 > Team Members : 이의석, 유하린, 박준희

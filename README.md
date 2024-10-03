@@ -23,16 +23,16 @@ https://ai.google.dev/gemma/docs/model_card_2
 1.  **Choose a Code Execution Environment**: Choose between web-based operation method and Google Colab-based operation method.
 2.  **Install Essential Libraries**: You can install libraries using the following command. `pip install -r requirements.txt` 
 
-    2-1.  **Google Colab-based Operation**: Run the `inference.ipynb`
+    2-1.  **Google Colab-based Operation**: Run the `demo.ipynb`
 
     2-2.  **Web-based Operation**: Run the backend server first (`python inference_chat.py`) and run streamlit-based web code (`streamlit run streamlit.py`)
 
     - In the `inference_chat.py` code, you need to make sure that the model address is the actual address.
 
-3.  **Upload a PDF**: Drag and drop or select a PDF file of the research paper you'd like to analyze.
-4.  **Ask a Question**: Use the chatbot interface to ask questions related to the content of the paper.
-5.  **Receive Contextual Answers**: Get detailed answers, tailored to the specific sections of the paper.
-6.  **Explore More**: Interact with the assistant to explore related studies, key insights, and summaries.  
+4.  **Upload a PDF**: Drag and drop or select a PDF file of the research paper you'd like to analyze.
+5.  **Ask a Question**: Use the chatbot interface to ask questions related to the content of the paper.
+6.  **Receive Contextual Answers**: Get detailed answers, tailored to the specific sections of the paper.
+7.  **Explore More**: Interact with the assistant to explore related studies, key insights, and summaries.  
 <br>
 
 The `gemma.py` script is the backbone of the **GemmaPaperQA** system, allowing users to upload and analyze PDFs using the **Gemma2** model to answer questions about research papers.

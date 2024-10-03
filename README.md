@@ -21,7 +21,8 @@ https://ai.google.dev/gemma/docs/model_card_2
 ## Demo Tutorial
 
 1.  **Choose a Code Execution Environment**: Choose between web-based operation method and Google Colab-based operation method.
-2.  **Install Essential Libraries**: You can install libraries using the following command. `pip install -r requirements.txt` 
+2.  **Install Essential Libraries**: You can install libraries using the following command.  
+   `pip install -r requirements.txt` 
 
     2-1.  **Google Colab-based Operation**: Run the `demo.ipynb`
 

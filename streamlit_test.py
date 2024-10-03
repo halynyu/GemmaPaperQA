@@ -4,20 +4,18 @@ import requests
 import io
 from PyPDF2 import PdfReader
 
-# inference_chat.py 실행
-st.write("Initializing inference chat...")
-
-# subprocess를 사용해 inference_chat.py를 백그라운드에서 실행
-process = subprocess.Popen(['python3', 'inference_chat.py'])
-
-# 이후에 Streamlit 코드 실행
-st.title('Your Streamlit App')
-st.write('This is a demo using Streamlit and inference_chat.py')
-
 
 FASTAPI_URL = "http://localhost:8000"  # FastAPI 서버 주소
 
 def main_page():
+
+    # inference_chat.py 실행
+    st.write("Initializing inference chat...")
+
+    # subprocess를 사용해 inference_chat.py를 백그라운드에서 실행
+    process = subprocess.Popen(['python3', 'inference_chat.py'])
+
+
     st.title("Welcome to GemmaPaperQA")
     st.subheader("Upload Your Paper")
 

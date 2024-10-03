@@ -25,9 +25,9 @@ https://ai.google.dev/gemma/docs/model_card_2
 
     2-1.  **Google Colab-based Operation**: Run the `demo.ipynb`
 
-    2-2.  **Web-based Operation**: Run the backend server first (`python inference_chat.py`) and run streamlit-based web code (`streamlit run streamlit.py`)
-
-    - In the `inference_chat.py` code, you need to make sure that the model address is the actual address.
+    2-2.  **Web-based Operation**:  
+        - In the `inference_chat.py` code, you need to make sure that the model address is the actual address.  
+        - Run the backend server first (`python inference_chat.py`) and run streamlit-based web code (`streamlit run streamlit.py`)  
 
 4.  **Upload a PDF**: Drag and drop or select a PDF file of the research paper you'd like to analyze.
 5.  **Ask a Question**: Use the chatbot interface to ask questions related to the content of the paper.

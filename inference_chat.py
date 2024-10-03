@@ -93,8 +93,7 @@ async def ask_question(question: Question):
         response = qa_chain.run(input_documents=docs, question=question.text)
 
         if "Helpful Answer:" in response:
-                response = response.split("Helpful Answer:")[1].strip()
-                
+            response = response.split("Helpful Answer:")[1].strip()
         return {"response": response}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing question: {str(e)}")

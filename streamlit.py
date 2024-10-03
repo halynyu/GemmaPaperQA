@@ -11,22 +11,23 @@ def main_page():
 
     paper = st.file_uploader("Upload Here!", type="pdf", label_visibility="hidden")
     if paper:
-        paper_title = []
-        pdf_reader = PdfReader(paper)
-        for page in pdf_reader.pages:
-            paper_title.append(page.extract_text())
-            break
-        paper_name = paper_title[0].split("\n")[0]
+        st.write(f"Upload complete! File name is {paper.name}")
+        st.write("Please click the button below.")
+        # pdf_reader = PdfReader(paper)
+        # for page in pdf_reader.pages:
+        #     paper_title.append(page.extract_text())
+        #     break
+        # paper_name = paper_title[0].split("\n")[0]
 
-        st.subheader(f"You upload the <{paper_name}> paper")
+        # st.subheader(f"You upload the <{paper_name}> paper")
 
-        if st.button("??? :)"):
+        if st.button("Click Here :)"):
             # FastAPI 서버에 PDF 파일 전송
             try:
                 files = {"file": (paper.name, paper, "application/pdf")}
                 response = requests.post(f"{FASTAPI_URL}/upload_pdf", files=files)
                 if response.status_code == 200:
-                    st.success("PDF successfully uploaded to the model!")
+                    st.success("PDF successfully uploaded to the model! Please click the button again")
                     st.session_state.messages = []
                     st.session_state.paper_name = paper.name[:-4]
                     st.session_state.page = "chat"
@@ -90,4 +91,3 @@ if st.session_state.page == "main":
     main_page()
 elif st.session_state.page == "chat":
     chat_page()
-

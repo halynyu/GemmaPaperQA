@@ -16,7 +16,7 @@ import io
 os.environ['WANDB_DISABLED'] = "true"
 
 # Constants
-MODEL_PATH = "/home/lab/halyn/gemma/halyn/paper/models/gemma-2-9b-it"
+MODEL_PATH = "/path/to/yout/model"
 
 app = FastAPI()
 

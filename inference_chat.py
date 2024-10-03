@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
@@ -19,39 +20,90 @@ MODEL_PATH = "/home/lab/halyn/gemma/halyn/paper/models/gemma-2-9b-it"
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 실제 운영 환경에서는 구체적인 origin을 지정하세요
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Global variables to store the knowledge base and QA chain
 knowledge_base = None
 qa_chain = None
 
 def load_pdf(pdf_file):
-    """Load and extract text from a PDF file object."""
+    """
+
+    Load and extract text from a PDF.
+    
+    Args:
+        pdf_file (str) : The PDF file.
+
+    Returns:
+        str: Extracted text from the PDF.
+    
+    """
     pdf_reader = PdfReader(pdf_file)
+    for page in pdf_reader.pages:
+        page.extract_text()
     text = "".join(page.extract_text() for page in pdf_reader.pages)
     return text
 
 def split_text(text):
-    """Split the extracted text into chunks."""
+    """
+
+    Split the extracted text into chunks.
+    
+    Args:
+        text (str) : The full text extracted from the PDF.
+
+    Returns:
+        list : A list of text chunks
+
+    """
     text_splitter = CharacterTextSplitter(
-        separator="\n",
-        chunk_size=1000,
-        chunk_overlap=200,
-        length_function=len
+        separator="\n",             # Use newline as a separator
+        chunk_size=1000,            # Maximum size of each chunk
+        chunk_overlap=200,          # Number of overlapping characters between chunks
+        length_function=len         # Function to determine the length of each chunk
     )
     return text_splitter.split_text(text)
 
 def create_knowledge_base(chunks):
-    """Create a FAISS knowledge base from text chunks."""
+    """
+    
+    Create a FAISS knowledge base from text chunks.
+    
+    Args:
+        chunks (list) : A list of text chunks.
+        
+    Returns:
+        FAISS: A FAISS knowledge base object
+        
+    """
     embeddings = HuggingFaceEmbeddings()
     return FAISS.from_texts(chunks, embeddings)
 
 def load_model(model_path):
-    """Load the HuggingFace model and tokenizer, and create a text-generation pipeline."""
+    """
+    
+    Load the HuggingFace model and tokenizer, and create a text-generation pipeline.
+    
+    Args:
+        model_path (str) : The path to the pre-trained model.
+
+    Returns:
+        pipeline: A HuggingFace pipeline for text generation.
+    
+    """
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(model_path)
     return pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=150, temperature=0.1)
 
 @app.on_event("startup")
 async def startup_event():
+    """ Start function to run the PDF question-answering system. """
     global qa_chain
     load_dotenv()
     
@@ -93,11 +145,12 @@ async def ask_question(question: Question):
         response = qa_chain.run(input_documents=docs, question=question.text)
 
         if "Helpful Answer:" in response:
-            response = response.split("Helpful Answer:")[1].strip()
+                response = response.split("Helpful Answer:")[1].strip()
+
         return {"response": response}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing question: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    uvicorn.run(app, host="0.0.0.0", port=8050)

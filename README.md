@@ -2,7 +2,7 @@
 [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-gemma2_2b-yellow)](https://huggingface.co/google/gemma-2-2b-it) [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-gemma2_2b_it_finetuned_paperqa-yellow)](https://huggingface.co/halyn/gemma2-2b-it-finetuned-paperqa) [![Gemma2 Model](https://img.shields.io/badge/💻-Try%20Gemma2_%20Demo-blue)](https://huggingface.co/spaces/junipark/gemma_paper_qa)
 <!--- BADGES: END --->
 # GemmaPaperQA: AI Research Assistant
-> Team Members : 이의석, 유하린, 박준희
+> Team Members : [이의석](https://github.com/Ui-Seok), [유하린](https://github.com/halynyu), [박준희](https://github.com/juni5184)
 > 
 ![gemma2-image](image/gemma2.png)
 

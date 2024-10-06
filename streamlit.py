@@ -4,7 +4,7 @@ import io
 from PyPDF2 import PdfReader
 
 # FASTAPI_URL = "http://localhost:8080"  # FastAPI 서버 주소
-FASTAPI_URL = "http://203.249.64.50:8080"
+FASTAPI_URL = "/server/path"
 
 def main_page():
     st.title("Welcome to GemmaPaperQA")
